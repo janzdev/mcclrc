@@ -18,7 +18,7 @@ include('./includes/sidebar.php');
 }
 </style>
 <main id="main" class="main">
-     <div class="pagetitle">
+     <div class="pagetitle" data-aos="fade-down">
 
           <h1>Statistic</h1>
 
@@ -34,7 +34,7 @@ include('./includes/sidebar.php');
           <div class="row">
                <div class="col-lg-12">
                     <div class="row">
-                         <div class="col-xxl-4 col-md-4">
+                         <div class="col-xxl-4 col-md-4" data-aos="fade-down">
                               <div class="card info-card books-card border-3 border-top border-warning">
 
                                    <div class="card-body">
@@ -66,7 +66,7 @@ include('./includes/sidebar.php');
                                    </div>
                               </div>
                          </div>
-                         <div class="col-xxl-4 col-md-4">
+                         <div class="col-xxl-4 col-md-4" data-aos="fade-down">
                               <div class="card info-card students-card border-3 border-top border-primary">
 
                                    <div class="card-body">
@@ -99,7 +99,7 @@ include('./includes/sidebar.php');
                                    </div>
                               </div>
                          </div>
-                         <div class="col-xxl-4 col-md-4">
+                         <div class="col-xxl-4 col-md-4" data-aos="fade-down">
                               <div class="card info-card borrowed-card  border-3 border-top border-success">
 
                                    <div class="card-body">
@@ -137,20 +137,31 @@ include('./includes/sidebar.php');
 
                          <div class="row">
 
-                              <div class="col-lg-6">
+                              <div data-aos="fade-down" class="col-lg-6">
                                    <div class="card">
                                         <div class="card-body">
                                              <?php
                                              $query = "SELECT course, COUNT(course) FROM  `user` GROUP BY course";
                                              $query_run = mysqli_query($con, $query); 
 
-                                            foreach($query_run as $course)
-                                            {
-                                                $courses[] = $course['course'];
-                                                $total_student_course[] = $course['COUNT(course)'];
-                                            }
+                                             if($course = mysqli_num_rows($query_run))
+                                             {
+                                                  foreach($query_run as $course)
+                                                  {
+                                                      $courses[] = $course['course'];
+                                                      $total_student_course[] = $course['COUNT(course)'];
+                                                      
+                                                  }
+
+                                             }
+                                             else
+                                             {
+                                                  echo '<h6>0</h6>';
+                                             }
+                                             
                                                   ?>
-                                             <h5 class="card-title">MOST VISITED COURSE</h5>
+                                             <h5 class="card-title">MOST COURSE VISITED</h5>
+
                                              <canvas id="barChart" style="max-height: 400px;"></canvas>
                                              <script>
                                              document.addEventListener("DOMContentLoaded", () => {
@@ -159,7 +170,7 @@ include('./includes/sidebar.php');
                                                        data: {
                                                             labels: <?php echo json_encode($courses)?>,
                                                             datasets: [{
-                                                                 label: 'Bar Chart',
+                                                                 label: 'Students',
                                                                  data: <?php echo json_encode($total_student_course)?>,
                                                                  backgroundColor: [
                                                                       'rgba(255, 99, 132, 0.2)',
@@ -195,7 +206,7 @@ include('./includes/sidebar.php');
                                         </div>
                                    </div>
                               </div>
-                              <div class="col-lg-6">
+                              <div data-aos="fade-down" class="col-lg-6">
                                    <div class="card">
                                         <div class="card-body">
                                              <?php
@@ -237,10 +248,66 @@ include('./includes/sidebar.php');
                                         </div>
                                    </div>
                               </div>
+                              <div class="col-lg-12" data-aos="fade-down">
+                                   <div class="card">
+                                        <div class="card-body">
+                                             <?php
+                                             $query = "SELECT
+                                             MONTHNAME(date_log) as `monthname`,
+                                             COUNT(*) as `count`
+                                         FROM `user_log`
+                                         GROUP BY MONTH(`date_log`) ORDER BY date_log ASC";
+                                             $query_run = mysqli_query($con, $query); 
+
+                                             if($month = mysqli_num_rows($query_run))
+                                             {
+                                                  foreach($query_run as $month)
+                                                  {
+                                                      $months[] = $month['monthname'];
+                                                      $total_student_month[] = $month['count'];
+                                                      
+                                                  }
+
+                                             }
+                                             else
+                                             {
+                                                  echo '<h6>0</h6>';
+                                             }
+                                             
+                                                  ?>
+                                             <h5 class="card-title">ATTENDANCE EVERY MONTH</h5>
+                                             <canvas id="lineChart" style="max-height: 300px;"></canvas>
+                                             <script>
+                                             document.addEventListener("DOMContentLoaded", () => {
+                                                  new Chart(document.querySelector('#lineChart'), {
+                                                       type: 'line',
+                                                       data: {
+                                                            labels: <?php echo json_encode($months)?>,
+                                                            datasets: [{
+                                                                 label: 'Attendance',
+                                                                 data: <?php echo json_encode($total_student_month)?>,
+                                                                 fill: false,
+                                                                 borderColor: 'rgb(75, 192, 192)',
+                                                                 tension: 0.1
+                                                            }]
+                                                       },
+                                                       options: {
+                                                            scales: {
+                                                                 y: {
+                                                                      beginAtZero: true
+                                                                 }
+                                                            }
+                                                       }
+                                                  });
+                                             });
+                                             </script>
+                                        </div>
+                                   </div>
+                              </div>
 
                          </div>
 
-                         <div class="col-12">
+                         <div data-aos="fade-down" class="col-12">
                               <div class="card recent-sales overflow-auto  border-3 border-top border-info">
 
                                    <div class="card-body">

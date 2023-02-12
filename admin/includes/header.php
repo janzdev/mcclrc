@@ -38,6 +38,9 @@
      <!-- Custom CSS -->
      <link href="assets/css/style.css" rel="stylesheet" />
 
+     <!-- Animation -->
+     <link rel="stylesheet" href="assets/css/aos.css" />
+
 
 
 

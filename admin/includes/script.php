@@ -87,6 +87,14 @@ $(document).ready(function() {
 <script src="assets/js/main.js"></script>
 <!-- Validate Login Form -->
 <script src="assets/js/validation.js"></script>
+
+<!-- Loading animation -->
+<script src="assets/js/aos.js"></script>
+
+<script>
+AOS.init();
+</script>
+
 </body>
 
 </html>

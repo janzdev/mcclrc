@@ -23,6 +23,9 @@
      <!-- Alertify JS cdn link -->
      <link rel="stylesheet" href="assets/css/alertify.min.css" />
      <link rel="stylesheet" href="assets/css/alertify.bootstraptheme.min.css" />
+
+     <!-- Animation -->
+     <link rel="stylesheet" href="assets/css/aos.css" />
 </head>
 
 <body>

@@ -58,7 +58,7 @@ include('includes/navbar.php');
                     <!--Grid row-->
                     <div class="row">
                          <!-- Grid column -->
-                         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3" data-aos="fade-right">
                               <h6 class="text-uppercase text-center mb-4 fw-bold">
                                    VISION
                               </h6>
@@ -80,7 +80,7 @@ include('includes/navbar.php');
                          <hr class="w-100 clearfix d-md-none" />
 
                          <!-- Grid column -->
-                         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3" data-aos="zoom-in-up">
                               <div class="d-flex align-items-center justify-content-center">
                                    <img src="assets/img/mcc-logo.png" alt="Mcc logo" width="150px">
                               </div>
@@ -95,7 +95,7 @@ include('includes/navbar.php');
                          <hr class="w-100 clearfix d-md-none" />
 
                          <!-- Grid column -->
-                         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3" data-aos="fade-left">
                               <h6 class="text-uppercase mb-4 fw-bold">Contact</h6>
                               <p><i class="fas fa-home mr-3"></i>Crossing Bunakan, Madridejos, Cebu, Philippines,
                                    6053</p>

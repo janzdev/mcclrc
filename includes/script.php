@@ -26,6 +26,12 @@
 
 <script src="assets/js/sweetalert.min.js"></script>
 
+<!-- Loading animation -->
+<script src="assets/js/aos.js"></script>
+
+<script>
+AOS.init();
+</script>
 
 
 
