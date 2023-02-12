@@ -3,7 +3,7 @@ include('authentication.php');
 include('includes/header.php'); 
 include('./includes/sidebar.php'); 
 
-// error_reporting(0);
+ error_reporting(0);
 
 if (isset($_SESSION['auth_admin']['admin_id']))
 {
@@ -90,11 +90,11 @@ $faculty_row = mysqli_fetch_array($faculty_query);
                                         {
 									$barcode = $_POST['barcode'];
 									
-									$book_query = mysqli_query($con,"SELECT * FROM book WHERE barcode = '$barcode' ");
+									$book_query = mysqli_query($con,"SELECT * FROM book WHERE accession_number = '$barcode' ");
 									$book_count = mysqli_num_rows($book_query);
 									$book_row = mysqli_fetch_array($book_query);
 									
-									if ($book_row['barcode'] != $barcode){
+									if ($book_row['accession_number'] != $barcode){
 										echo '
 											<table>
 												<tr>

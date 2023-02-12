@@ -92,11 +92,11 @@ $user_row = mysqli_fetch_array($user_query);
                                         {
 									$barcode = $_POST['barcode'];
 									
-									$book_query = mysqli_query($con,"SELECT * FROM book WHERE barcode = '$barcode' ");
+									$book_query = mysqli_query($con,"SELECT * FROM book WHERE accession_number = '$barcode' ");
 									$book_count = mysqli_num_rows($book_query);
 									$book_row = mysqli_fetch_array($book_query);
 									
-									if ($book_row['barcode'] != $barcode){
+									if ($book_row['accession_number'] != $barcode){
 										echo '
 											<table>
 												<tr>
