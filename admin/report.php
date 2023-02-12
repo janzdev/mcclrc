@@ -4,8 +4,8 @@ include('includes/header.php');
 include('./includes/sidebar.php'); 
 
 ?>
-<main id="main" class="main">
-    
+<main id="main" class="main" data-aos="fade-down">
+
      <div class="pagetitle">
           <h1>Report</h1>
           <nav>
@@ -34,19 +34,21 @@ include('./includes/sidebar.php');
                          <div class="card-body">
                               <!-- <h4 class="m-3">All Transaction</h4> -->
                               <div class="table-responsive mt-3">
-                                   
+
                                    <ul class="nav nav-tabs" id="myTab">
                                         <li class="nav-item">
-                                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#student-tab-pane">Students</button>
+                                             <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                                  data-bs-target="#student-tab-pane">Students</button>
                                         </li>
                                         <li class="nav-item">
-                                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#faculty-tab-pane">Faculty Staff</button>
+                                             <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                                  data-bs-target="#faculty-tab-pane">Faculty Staff</button>
                                         </li>
                                    </ul>
                                    <div class="tab-content mt-3" id="myTabContent">
 
                                         <div class="tab-pane fade show active" id="student-tab-pane">
-                                                  <table id="myDataTable" cellpadding="0" cellspacing="0" border="0"
+                                             <table id="myDataTable" cellpadding="0" cellspacing="0" border="0"
                                                   class="table table-striped table-bordered">
 
                                                   <thead>
@@ -92,7 +94,7 @@ include('./includes/sidebar.php');
                                         </div>
                                         <div class="tab-pane fade" id="faculty-tab-pane">
 
-                                                  <table id="myDataTable2" cellpadding="0" cellspacing="0" border="0"
+                                             <table id="myDataTable2" cellpadding="0" cellspacing="0" border="0"
                                                   class="table table-striped table-bordered">
 
                                                   <thead>
@@ -136,8 +138,8 @@ include('./includes/sidebar.php');
                                              </table>
 
                                         </div>
-                               </div>
-                                   
+                                   </div>
+
 
                               </div>
 

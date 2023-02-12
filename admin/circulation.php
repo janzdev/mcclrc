@@ -6,7 +6,7 @@ include('./includes/sidebar.php');
 ?>
 
 
-<main id="main" class="main ">
+<main id="main" class="main" data-aos="fade-down">
      <div class="pagetitle">
           <h1>Circulation</h1>
           <nav>

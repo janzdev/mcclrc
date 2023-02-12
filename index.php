@@ -21,7 +21,7 @@ if($_SESSION['auth_role'] != "0")
 <div class="container">
      <div class="row">
           <div class="col-12">
-               <div class="card  mt-4 ">
+               <div class="card  mt-4 " data-aos="fade-up">
                     <div class="card-header">
                          <div class="d-flex align-items-center justify-content-center mt-2 ">
                               <div class="mx-2">
@@ -48,7 +48,7 @@ if($_SESSION['auth_role'] != "0")
                     <div class="card-body border border-0">
                          <?php if(!isset($_GET['search'])) :?>
                          <center>
-                              <a href="#new_books" class="btn btn-primary mt-2 ">
+                              <a href="#new_books" class="btn btn-primary mt-2 " data-aos="zoom-in">
                                    New Acquisitions
 
                               </a>
@@ -295,7 +295,7 @@ if($_SESSION['auth_role'] != "0")
                                    {
                                         ?>
 
-                         <div class="col-12 col-md-3 ">
+                         <div class="col-12 col-md-3 " data-aos="zoom-in">
                               <a href="book_details.php?id=<?=$book['book_id']?>">
                                    <div class="card h-100 shadow">
                                         <?php if($book['book_image'] != ""): ?>

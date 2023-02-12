@@ -73,14 +73,7 @@ include('./includes/sidebar.php');
 
                                    </form>
 
-                                   <div class="col-12 col-md-3 d-flex ">
-                                        <a href="student_penalty_list.php" name=""
-                                             class="viewBookBtn btn btn-sm  border text-info fs-"
-                                             data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                             title="Student Penalty List">
-                                             <i class="bi bi-printer-fill fs-4"></i>
-                                        </a>
-                                   </div>
+
 
                               </div>
 

@@ -17,7 +17,7 @@ if($_SESSION['auth_role'] != "0")
 <div class="container">
      <div class="row">
           <div class="col-md-12">
-               <div class="card mt-4">
+               <div class="card mt-4" data-aos="fade-up">
                     <div class="card-header">
                          <h4 class="text-muted">EBooks</h4>
                     </div>

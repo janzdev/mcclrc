@@ -25,7 +25,7 @@ $name_session = $_SESSION['auth_stud']['stud_name'];
 <div class="container">
      <div class="row">
           <div class="col-md-12">
-               <div class="card mt-4">
+               <div class="card mt-4" data-aos="fade-up">
                     <div class="card-header">
                          <h4 class="text-muted">My Profile</h4>
                     </div>
