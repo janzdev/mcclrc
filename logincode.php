@@ -29,7 +29,7 @@ if(isset($_POST['login_btn']))
     
     if($_SESSION['auth_role'] == 0)  // 1 = Admin
     {
-      $_SESSION['message_success'] = "Welcome student!";
+      $_SESSION['message_success'] = "Welcome to WebOPAC!";
       header("Location:index.php");
       exit(0);
     }

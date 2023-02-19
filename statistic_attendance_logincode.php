@@ -36,7 +36,7 @@ include('admin/config/dbcon.php');
                          
                          if($student_query_run)
                          {         
-                                  $_SESSION['status'] = "You Are now login";
+                                  $_SESSION['status'] = "You are now Login";
                                    $_SESSION['status_code'] = "success";
                                    header("Location:statistic_attendance_login.php");
                                    exit(0);

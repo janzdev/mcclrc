@@ -160,7 +160,7 @@ include('./includes/sidebar.php');
                                              }
                                              
                                                   ?>
-                                             <h5 class="card-title">MOST COURSE VISITED</h5>
+                                             <h5 class="card-title">MOST PROGRAM VISITED</h5>
 
                                              <canvas id="barChart" style="max-height: 400px;"></canvas>
                                              <script>
@@ -170,7 +170,7 @@ include('./includes/sidebar.php');
                                                        data: {
                                                             labels: <?php echo json_encode($courses)?>,
                                                             datasets: [{
-                                                                 label: 'Students',
+                                                                 label: 'Program',
                                                                  data: <?php echo json_encode($total_student_course)?>,
                                                                  backgroundColor: [
                                                                       'rgba(255, 99, 132, 0.2)',
@@ -219,7 +219,7 @@ include('./includes/sidebar.php');
                                                 $total_student_attendance[] = $student['total'];
                                             }
                                                   ?>
-                                             <h5 class="card-title">MOST ATTENDANCE STUDENT</h5>
+                                             <h5 class="card-title">TOP LIBRARY USER</h5>
                                              <canvas id="pieChart" style="max-height: 220px;"></canvas>
                                              <script>
                                              document.addEventListener("DOMContentLoaded", () => {
@@ -240,6 +240,7 @@ include('./includes/sidebar.php');
 
                                                                  ],
                                                                  hoverOffset: 4
+
                                                             }]
                                                        }
                                                   });
@@ -275,7 +276,7 @@ include('./includes/sidebar.php');
                                              }
                                              
                                                   ?>
-                                             <h5 class="card-title">ATTENDANCE EVERY MONTH</h5>
+                                             <h5 class="card-title">MONTHLY ATTENDANCE</h5>
                                              <canvas id="lineChart" style="max-height: 300px;"></canvas>
                                              <script>
                                              document.addEventListener("DOMContentLoaded", () => {

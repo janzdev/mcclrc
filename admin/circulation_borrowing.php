@@ -173,15 +173,15 @@ $user_row = mysqli_fetch_array($user_query);
 									$date_borrowed =$_POST['date_borrowed'];
 									$due_date =$_POST['due_date'];
 									
-									$trapBookCount= mysqli_query($con,"SELECT count(*) as books_allowed from borrow_book where user_id = '$user_id' and borrowed_status = 'borrowed'");
+									$trapBookCount= mysqli_query($con,"SELECT count(*) AS books_allowed FROM borrow_book WHERE user_id = '$user_id' AND borrowed_status = 'borrowed'");
 									
 									$countBorrowed = mysqli_fetch_assoc($trapBookCount);
 									
-									$bookCountQuery= mysqli_query($con,"SELECT count(*) as book_count from borrow_book where user_id = '$user_id' and borrowed_status = 'borrowed' and book_id = $book_id");
+									$bookCountQuery= mysqli_query($con,"SELECT count(*) AS book_count FROM borrow_book WHERE user_id = '$user_id' AND borrowed_status = 'borrowed' AND book_id = $book_id");
 									
 									$bookCount = mysqli_fetch_assoc($bookCountQuery);
 									
-									$allowed_book_query= mysqli_query($con,"select * from allowed_book order by allowed_book_id DESC ") ;
+									$allowed_book_query= mysqli_query($con,"SELECT * FROM allowed_book ORDER BY allowed_book_id DESC ") ;
 									$allowed = mysqli_fetch_assoc($allowed_book_query);
 									
 									if ($countBorrowed['books_allowed'] == $allowed['qntty_books']){
@@ -190,7 +190,7 @@ $user_row = mysqli_fetch_array($user_query);
 										echo "<script>alert('Book Already Borrowed!'); window.location='circulation_borrowing.php?student_id=".$student_id."'</script>";
 									}else{
 										
-									$update_copies = mysqli_query($con,"SELECT * from book where book_id = '$book_id' ");
+									$update_copies = mysqli_query($con,"SELECT * FROM book WHERE book_id = '$book_id' ");
 									$copies_row= mysqli_fetch_assoc($update_copies);
 									
 									$book_copies = $copies_row['copy'];
@@ -210,7 +210,7 @@ $user_row = mysqli_fetch_array($user_query);
 									mysqli_query($con,"INSERT INTO borrow_book(user_id,book_id,date_borrowed,due_date,borrowed_status)
 									VALUES('$user_id','$book_id','$date_borrowed','$due_date','borrowed')");
 									
-									$report_history=mysqli_query($con,"select * from admin where admin_id = $id_session ");
+									$report_history=mysqli_query($con,"SELECT * FROM admin WHERE admin_id = $id_session ");
 									$report_history_row=mysqli_fetch_array($report_history);
 									$admin_row=$report_history_row['firstname']." ".$report_history_row['middlename']." ".$report_history_row['lastname'];	
 									

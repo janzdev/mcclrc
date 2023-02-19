@@ -27,15 +27,14 @@ body {
 
           <form action="statistic_attendance_logincode.php" method="POST" class="mb-5">
                <div class="mb-3">
-                    <label for="student_id" class="form-label fw-semibold">STUDENT ID</label>
-                    <input type="text" name="inputted_id" class="form-control" id="student_id" placeholder="">
+                    <label for="student_id" class="form-label fw-semibold">STUDENT LOGIN</label>
+                    <input type="text" name="inputted_id" class="form-control" id="student_id"
+                         placeholder="Please enter your Student ID">
                </div>
                <div class="d-grid gap-2 mb-3">
                     <button type="submit" name="login_btn" class="btn btn-primary" type="button">LOGIN</button>
                </div>
           </form>
-
-
 
      </div>
 </div>

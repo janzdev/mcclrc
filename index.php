@@ -30,7 +30,7 @@ if($_SESSION['auth_role'] != "0")
                               </div>
 
                               <div class="col-8  mt-2  ">
-                                   <h3 class="fw-semibold">Madridejos Community College Library</h3>
+                                   <h3 class="fw-semibold">Madridejos Community College Learning Resource Center</h3>
                                    <form class=" " method="GET">
                                         <div class="d-flex">
                                              <div class="input-group mb-3 me-5">
