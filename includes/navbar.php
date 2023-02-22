@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php session_start(); 
+include('admin/config/dbcon.php');
+?>
+
 <nav class="navbar navbar-expand-lg" style="background: #0096FF;">
      <?php  $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/")+ 1); ?>
      <div class="container-fluid mx-5">
@@ -20,30 +23,15 @@
                          <a class="nav-link text-white <?=$page == 'ebook.php' ? 'active': '' ?> fw-semibold"
                               href="ebook.php">Ebooks</a>
                     </li>
-                    <li class="nav-item dropdown">
-                         <a class="nav-link nav-icon<?=$page == 'dropdown-menu' ? 'active': '' ?> " href="#"
-                              data-bs-toggle="dropdown"> <i class="bi bi-bell text-light"></i>
-                              <span class="badge bg-info badge-number">1</span> </a>
-                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications ">
-                              <li class="dropdown-header"> You have 1 new notifications <a href="#"><span
-                                             class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a></li>
-                              <li>
-                                   <hr class="dropdown-divider">
-                              </li>
-                              <li class="notification-item ">
 
-                                   <div>
-                                        <!-- <h4>Lorem Ipsum</h4> -->
-                                        <p>Quae dolorem earum veritatis oditseno</p>
-
-                                   </div>
-                              </li>
-                              <li>
-                                   <hr class="dropdown-divider">
-                              </li>
-
-                         </ul>
+                    <li class="nav-item">
+                         <a class="nav-link text-white <?=$page == 'notification.php' ? 'active': '' ?> fw-semibold"
+                              href="notification.php">Notification</a>
                     </li>
+
+
+
+
                     <?php else :?>
                     <li class="nav-item">
                          <a class="nav-link  text-white <?=$page == 'home.php' ? 'active': '' ?> fw-semibold"

@@ -240,16 +240,21 @@ if($_SESSION['auth_role'] != "0")
                                                                                 by&nbsp;<?=$book['author'];?>
                                                                            </div>
                                                                       </div>
-                                                                      <div class="row mt-5">
+                                                                      <div class="row mt-5 d-flex align-items-center">
 
                                                                            <div
                                                                                 class="col-lg-4 col-md-4 fw-semibold text-primary">
                                                                                 <?=$book['copy'];?>&nbsp;Available
                                                                            </div>
                                                                            <div
-                                                                                class="col-lg-6 col-md-6 fw-semibold text-dark">
+                                                                                class="col-lg-5 col-md-5 fw-semibold text-dark">
                                                                                 LRC
                                                                                 Location:&nbsp;<?=$book['classname'];?></span>
+                                                                           </div>
+                                                                           <div
+                                                                                class="col-lg-3 col-md-3 fw-semibold text-primary text-center">
+                                                                                <button
+                                                                                     class="btn btn-primary px-4 my-2">Hold</button>
                                                                            </div>
                                                                       </div>
 
