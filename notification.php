@@ -18,14 +18,20 @@ if($_SESSION['auth_role'] != "0")
 
 
 
-<div class="container " style="height: 70vh">
+<div class="container ">
      <div class="row ">
           <div class="col-12 ">
-               <div class="card  mt-4 " data-aos="fade-up">
+               <div class="card  mt-4 " data-aos="fade-up" style="height: 70vh">
                     <div class="card-header">
 
                     </div>
                     <p class="mx-2">No Notification</p>
+                    <?php
+$stop_date = '2009-09-30 20:24:00';
+echo 'date before day adding: ' . $stop_date; 
+$stop_date = date('Y-m-d H:i:s', strtotime($stop_date . ' -1 day'));
+echo 'date after adding 1 day: ' . $stop_date;
+?>
                </div>
 
           </div>

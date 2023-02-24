@@ -253,8 +253,10 @@ if($_SESSION['auth_role'] != "0")
                                                                            </div>
                                                                            <div
                                                                                 class="col-lg-3 col-md-3 fw-semibold text-primary text-center">
-                                                                                <button
-                                                                                     class="btn btn-primary px-4 my-2">Hold</button>
+                                                                                <form action="" method="POST">
+                                                                                     <button type="submit" name="hold"
+                                                                                          class="btn btn-primary px-4 my-2">Hold</button>
+                                                                                </form>
                                                                            </div>
                                                                       </div>
 
@@ -268,6 +270,53 @@ if($_SESSION['auth_role'] != "0")
                               
                          }  
                          ?>
+                                                       <?php 
+                                                                      if(isset($_POST['hold']))
+                                                                      {
+                                                                          $book_hold = $book['book_id'];
+                                                                          $name_hold = $_SESSION['auth_stud']['stud_id'];
+                                                                          
+                                                                           
+                                                                      
+                                                                           $query = "INSERT INTO hold (book_id, user_id, hold_date) VALUES ('$book_hold', '$name_hold',  NOW())";
+                                                                           $query_run = mysqli_query($con, $query);
+                                                                      
+                                                                          
+                                                                           if($query_run)
+                                                                           {
+
+                                                                                $update_copies = mysqli_query($con,"SELECT * FROM book WHERE book_id = '$book_hold' ");
+                                                                                $copies_row= mysqli_fetch_assoc($update_copies);
+                                                                                
+                                                                                $book_copies = $copies_row['copy'];
+                                                                                $new_book_copies = $book_copies - 1;
+                                                                                
+                                                                                if ($new_book_copies < 2){
+                                                                                     echo "<script>alert('Book out of Copy!'); window.location='index.php'</script>";
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                     mysqli_query($con,"UPDATE book SET copy = '$new_book_copies' where book_id = '$book_hold' ");
+
+
+                                                                                }
+                                                                                // $_SESSION['message_error'] = 'Hold Book  Successfully';
+                                                                                // header("Location: index.php?search='$filtervalues'");
+                                                                                // exit(0);
+                                                                                echo "<script>
+                                                                                alert('Hold book Successfully');
+                                                                                window.location = 'index.php'
+                                                                                </script>";
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                $_SESSION['message_error'] = 'Book not Hold';
+                                                                                header("Location: index.php?search='$filtervalues'");
+                                                                                exit(0);
+                                                                                }
+
+                                                                           }
+                                                  ?>
                                         </section>
                                    </div>
                               </div>
@@ -337,7 +386,12 @@ if($_SESSION['auth_role'] != "0")
 
 </div>
 
+
+
 <?php
+
+
+
 include('includes/footer.php');
 include('includes/script.php');
 include('message.php'); 

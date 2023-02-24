@@ -90,15 +90,15 @@ if(isset($_POST['add_student']))
      $query = "INSERT INTO user (lastname, firstname, middlename, nickname, gender, course, address, cell_no, birthdate, email, year_level, student_id_no, contact_person, contact_person_no, username, user_added) VALUES ('$lastname', '$firstname', '$middlename', '$nickname', '$gender', '$course', '$address', '$cellphone_number', '$birthdate', '$email', '$year_level', '$student_id_no', '$contact_person', '$contact_person_no', '$username', NOW())";
      $query_run = mysqli_query($con, $query);
 
-     $phc = '/^[0-9]{10, 10}$/';
-     if(preg_match($phc, $cellphone_number))
-     {
-          echo "Hello";
-     }
-     else
-     {
-          echo "Good bye";
-     }
+     // $phc = '/^[0-9]{10, 10}$/';
+     // if(preg_match($phc, $cellphone_number))
+     // {
+     //      echo "Hello";
+     // }
+     // else
+     // {
+     //      echo "Good bye";
+     // }
 
      if($query_run)
      {

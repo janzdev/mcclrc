@@ -55,6 +55,11 @@ include('admin/config/dbcon.php');
                               <li>
                                    <hr class="dropdown-divider">
                               </li>
+                              <li><a class="dropdown-item" href="hold.php">
+                                        <i class="bi bi-book"></i> Hold Books</a></li>
+                              <li>
+                                   <hr class="dropdown-divider">
+                              </li>
                               <li>
                                    <form action="allcode.php" method="POST">
                                         <button type="submit" name="logout_btn" class="dropdown-item"><i
