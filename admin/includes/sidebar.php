@@ -26,6 +26,7 @@
                     <i class="bi bi-journal-album"></i><span>Circulation</span>
                </a>
           </li>
+
           <li class="nav-item">
                <a class="nav-link collapsed<?=$page == 'report.php' || $page == 'report_penalty.php' || $page == 'report_faculty.php' ? 'active': '' ?>"
                     href="report.php">

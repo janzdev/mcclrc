@@ -32,6 +32,7 @@ if (isset($_SESSION['auth_admin']['admin_id']))
                          <i class="bi bi-search"></i>
                     </a>
                </li> -->
+
                <?php
                $query = "SELECT * FROM admin WHERE admin_id = '$id_session'";
                $query_run = mysqli_query($con, $query);
