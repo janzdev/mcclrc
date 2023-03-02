@@ -118,7 +118,7 @@ include('./includes/sidebar.php');
 									LEFT JOIN book ON borrow_book.book_id = book.book_id 
 									LEFT JOIN user ON borrow_book.user_id = user.user_id 
 									WHERE borrowed_status = 'borrowed'
-									ORDER BY borrow_book.borrow_book_id DESC") or die(mysqli_error());
+									ORDER BY borrow_book.borrow_book_id DESC");
 								$borrow_count = mysqli_num_rows($borrow_query);
 								while($borrow_row = mysqli_fetch_array($borrow_query)){
 									$id = $borrow_row ['borrow_book_id'];

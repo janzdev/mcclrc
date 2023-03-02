@@ -22,16 +22,84 @@ if($_SESSION['auth_role'] != "0")
      <div class="row ">
           <div class="col-12 ">
                <div class="card  mt-4 " data-aos="fade-up" style="height: 70vh">
-                    <div class="card-header">
 
-                    </div>
-                    <p class="mx-2">No Notification</p>
+
                     <?php
-$stop_date = '2009-09-30 20:24:00';
-echo 'date before day adding: ' . $stop_date; 
-$stop_date = date('Y-m-d H:i:s', strtotime($stop_date . ' -1 day'));
-echo 'date after adding 1 day: ' . $stop_date;
-?>
+                         $name_hold = $_SESSION['auth_stud']['stud_id'];
+
+                         $borrow_query = mysqli_query($con,"SELECT * FROM borrow_book
+                         LEFT JOIN book ON borrow_book.book_id = book.book_id
+                         WHERE user_id = '$name_hold' && borrowed_status = 'borrowed' ORDER BY borrow_book_id DESC");
+                         $borrow_count = mysqli_num_rows($borrow_query);
+                         while($borrow_row = mysqli_fetch_array($borrow_query))
+                         {
+                        
+
+                         $timezone = "Asia/Manila";
+                         if(function_exists('date_default_timezone_set')) date_default_timezone_set($timezone);
+                         $cur_date = date("Y-m-d H:i:s");
+                         $due_date= $borrow_row['due_date'];
+                        
+                         $curr_date = date('Y-m-d H:i:s', strtotime($cur_date ));
+                         $duee_date = date('Y-m-d H:i:s', strtotime($due_date. ' -1 day'));
+                         
+                        
+
+
+                         if ($duee_date < $curr_date) 
+                         {
+                              
+                              
+                         ?>
+                    <div class="alert alert-info text-center" role="alert">
+                         <?php  echo  'Please return this Book <b>'.$borrow_row['title'].'</b> before '.date("M d, Y",strtotime($borrow_row['due_date'])); 
+                                   
+                                             ?>
+                    </div>
+                    <?php  
+                   
+                         } 
+                         else 
+                         {
+                              
+                              echo '<div class="alert alert-info text-center" role="alert">
+                                        No Notifications
+                                   </div>';
+                                  
+                         }   
+                        
+
+                         // if ($duee_date >= $curr_date) 
+                         // {
+                         //     echo $due_date;
+                         //      echo ' Your Book Due date is in '.date("M d, Y",strtotime($borrow_row['due_date'])).' Please return the Book ';
+                            
+                         // } elseif ($duee_date < $curr_date) {
+                              
+                         //      echo $due_date.'<br>';
+                         //      echo 'Due Date: '.$duee_date.'<br>Current Date: '.$curr_date.'<br>';
+                         //      echo date("M d, Y",strtotime($borrow_row['due_date'])).' Your Borrowed Book is already have a Penalty. Please return it now';
+                              
+                         // } else {
+                              
+                         //     echo '<div class="alert alert-info text-center" role="alert">
+                         //                No Notifications
+                         //           </div>';
+                         //     echo $curr_date;
+                         // }
+                    }
+
+                     ?>
+
+                    <!-- 
+                    <?php
+
+
+                         $stop_date = '2009-09-30 20:24:00';
+                         echo 'date before day adding: ' . $stop_date; 
+                         $stop_date = date('Y-m-d H:i:s', strtotime($stop_date . ' +1 day'));
+                         echo '<br>date after adding 1 day: ' . $stop_date;
+                    ?> -->
                </div>
 
           </div>
