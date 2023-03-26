@@ -278,7 +278,7 @@ if($_SESSION['auth_role'] != "0")
                                                                           
                                                                            
                                                                       
-                                                                           $query = "INSERT INTO hold (book_id, user_id, hold_date) VALUES ('$book_hold', '$name_hold',  NOW())";
+                                                                           $query = "INSERT INTO holds (book_id, user_id, hold_date) VALUES ('$book_hold', '$name_hold',  NOW())";
                                                                            $query_run = mysqli_query($con, $query);
                                                                       
                                                                           

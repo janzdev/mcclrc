@@ -29,8 +29,7 @@ if($_SESSION['auth_role'] != "0")
                                         <?php
 
                     $name_hold = $_SESSION['auth_stud']['stud_id'];
-                    $query = "SELECT * FROM hold
-                    LEFT JOIN book ON hold.book_id = book.book_id
+                    $query = "SELECT * FROM holds LEFT JOIN book ON holds.book_id = book.book_id
                    
                     WHERE user_id = '$name_hold' ORDER BY hold_id DESC";
 
@@ -116,7 +115,7 @@ if($_SESSION['auth_role'] != "0")
  {
       $holdbook_id = mysqli_real_escape_string($con, $_POST['cancel_hold']);
  
-      $query = "DELETE FROM hold WHERE hold_id ='$holdbook_id'";
+      $query = "DELETE FROM holds WHERE hold_id ='$holdbook_id'";
       $query_run = mysqli_query($con, $query);
  
       if($query_run)

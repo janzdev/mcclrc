@@ -30,7 +30,11 @@ if($_SESSION['auth_role'] != "0")
                          $borrow_query = mysqli_query($con,"SELECT * FROM borrow_book
                          LEFT JOIN book ON borrow_book.book_id = book.book_id
                          WHERE user_id = '$name_hold' && borrowed_status = 'borrowed' ORDER BY borrow_book_id DESC");
-                         $borrow_count = mysqli_num_rows($borrow_query);
+                        
+                         if(mysqli_num_rows($borrow_query) > 0 )
+                         {
+
+                         
                          while($borrow_row = mysqli_fetch_array($borrow_query))
                          {
                         
@@ -53,20 +57,20 @@ if($_SESSION['auth_role'] != "0")
                          ?>
                     <div class="alert alert-info text-center" role="alert">
                          <?php  echo  'Please return this Book <b>'.$borrow_row['title'].'</b> before '.date("M d, Y",strtotime($borrow_row['due_date'])); 
-                                   
-                                             ?>
+                                             
+                                                       ?>
                     </div>
                     <?php  
                    
                          } 
-                         else 
-                         {
+                         // else 
+                         // {
                               
-                              echo '<div class="alert alert-info text-center" role="alert">
-                                        No Notifications
-                                   </div>';
+                         //      echo '<div class="alert alert-info text-center" role="alert">
+                         //                No Notifications
+                         //           </div>';
                                   
-                         }   
+                         // }   
                         
 
                          // if ($duee_date >= $curr_date) 
@@ -88,6 +92,15 @@ if($_SESSION['auth_role'] != "0")
                          //     echo $curr_date;
                          // }
                     }
+               }
+               else
+               {
+                    ?>
+                    <div class="alert alert-info text-center" role="alert">
+                         No Notifications
+                    </div>
+                    <?php
+               }
 
                      ?>
 
@@ -119,7 +132,7 @@ include('includes/footer.php');
 include('includes/script.php');
 include('message.php'); 
 ?>
-<script>
+<!-- <script>
 $(document).ready(function() {
      $("#live_search").keyup(function() {
           var input = $(this).val();
@@ -141,4 +154,4 @@ $(document).ready(function() {
           }
      });
 });
-</script>
+</script> -->
