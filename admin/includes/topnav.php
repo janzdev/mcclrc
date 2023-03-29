@@ -1,3 +1,4 @@
+<?php include('config/dbcon.php'); ?>
 <header id="header" class="header fixed-top d-flex align-items-center">
      <!-- Logo -->
      <div class="d-flex align-items-center">
@@ -33,13 +34,87 @@ if (isset($_SESSION['auth_admin']['admin_id']))
                     </a>
                </li> -->
 
-               <?php
+
+               <li class="nav-item dropdown me-3">
+
+                    <a class="nav-link nav-icon fs-4" href="#" data-bs-toggle="dropdown">
+
+                         <i class="bi bi-bell"></i>
+                         <?php
+                                             $query = "SELECT * FROM holds";
+                                             $query_run = mysqli_query($con, $query); 
+
+                                             if($total_borrowers = mysqli_num_rows($query_run))
+                                             { 
+                                                  echo '<span class="badge bg-primary badge-number">'.$total_borrowers.'</span>';
+                                             }
+                                             else
+                                             {
+                                                  echo '<span class="badge bg-primary badge-number">0</span>';
+                                             }
+                                                  ?>
+
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+
+                         <li class="dropdown-header">
+                              You have <?=$total_borrowers?> notifications
+                              <a href="#"><span
+                                        class="badge rounded-pill bg-primary p-2 ms-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+                         </li>
+                         <?php 
+                    $query_notif = "SELECT * FROM holds LEFT JOIN book ON holds.book_id = book.book_id
+                   LEFT JOIN user ON holds.user_id = user.user_id
+                   ORDER BY hold_id DESC";
+                      $query_run = mysqli_query($con, $query_notif);
+                      if(mysqli_num_rows($query_run) > 0 )
+                      {
+                                foreach($query_run as $holdlist)
+                                {
+                    ?>
+                         <li>
+                              <hr class="dropdown-divider" />
+                         </li>
+                         <li class="notification-item">
+
+                              <div>
+                                   <h4><?=$holdlist['firstname'].' '.$holdlist['lastname'];?></h4>
+                                   <p><?=$holdlist['title']?></p>
+                                   <p><?=date("M d, Y h:i:s a",strtotime($holdlist['hold_date']));?></p>
+                                   <form action="" method="POST">
+                                        <button type="submit" value="<?=$holdlist['hold_id'];?>"
+                                             class="btn btn-primary btn-sm" name="done">Done</button>
+                                        <button type="submit" value="<?=$holdlist['hold_id'];?>"
+                                             class="btn btn-danger btn-sm" name="cancel">Cancel</button>
+                                   </form>
+                              </div>
+
+                         </li>
+
+                         <li>
+                              <hr class="dropdown-divider" />
+                         </li>
+                         <?php
+                    }
+                    }
+                ?>
+
+                         <li class="dropdown-footer">
+                              <a href="#">Show all notifications</a>
+                         </li>
+
+                    </ul>
+
+               </li>
+
+
+               <li class="nav-item dropdown pe-3">
+                    <?php
                $query = "SELECT * FROM admin WHERE admin_id = '$id_session'";
                $query_run = mysqli_query($con, $query);
                $row = mysqli_fetch_array($query_run);
-                
                ?>
-               <li class="nav-item dropdown pe-3">
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="javascript:;"
                          data-bs-toggle="dropdown">
 
@@ -106,5 +181,64 @@ if (isset($_SESSION['auth_admin']['admin_id']))
                     </ul>
                </li>
           </ul>
+
      </nav>
 </header>
+
+<?php
+ if(isset($_POST['cancel']))
+ {
+      $holdbook_id = mysqli_real_escape_string($con, $_POST['cancel']);
+ 
+      $query = "DELETE FROM holds WHERE hold_id ='$holdbook_id'";
+      $query_run = mysqli_query($con, $query);
+ 
+      if($query_run)
+      {
+          
+
+
+
+
+          //  $_SESSION['message_success'] = 'Cancel book successfully';
+          //  header("Location: hold.php");
+          //  exit(0);
+
+           echo "<script>alert('Cancel book successfully'); window.location='index.php'</script>";
+      }
+      else
+      {
+           $_SESSION['message_error'] = 'There something Wrong';
+           header("Location: hold.php");
+           exit(0);
+      }
+ }
+
+
+ 
+
+ if(isset($_POST['done']))
+{
+     $holdbook_id = mysqli_real_escape_string($con, $_POST['done']);
+
+               $query = "INSERT INTO holds(hold_status) VALUES('approved') WHERE hold_id ='$holdbook_id'";
+               $query_run = mysqli_query($con, $query);
+
+               if($query_run)
+               {
+                    
+                    $_SESSION['message_success'] = 'Hold Book approved';
+                    header("Location: index.php");
+                    exit(0);
+               }
+               else
+               {
+                    $_SESSION['message_error'] = 'Hold Book not approved';
+                    header("Location: index.php");
+                    exit(0);
+               }
+     }
+     else
+     {
+               
+     }

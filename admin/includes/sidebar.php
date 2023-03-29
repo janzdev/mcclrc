@@ -33,6 +33,7 @@
                     <i class="bi bi-file-earmark"></i><span>Report</span>
                </a>
           </li>
+
           <!-- <li class="nav-item">
                <a class="nav-link collapsed<?=$page == 'web_opac.php' || $page == 'web_opac_add.php' || $page == 'web_opac_view.php' || $page == 'web_opac_edit.php' ? 'active': '' ?>"
                     href="web_opac.php">
