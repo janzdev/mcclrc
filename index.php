@@ -359,6 +359,7 @@ if($_SESSION['auth_role'] != "0")
                                         <?php endif; ?>
 
                                    </div>
+
                               </a>
                          </div>
                          <?php

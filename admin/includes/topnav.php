@@ -1,4 +1,4 @@
-<?php include('config/dbcon.php'); ?>
+<?php //include('authentication.php'); ?>
 <header id="header" class="header fixed-top d-flex align-items-center">
      <!-- Logo -->
      <div class="d-flex align-items-center">
@@ -41,7 +41,7 @@ if (isset($_SESSION['auth_admin']['admin_id']))
 
                          <i class="bi bi-bell"></i>
                          <?php
-                                             $query = "SELECT * FROM holds";
+                                             $query = "SELECT * FROM holds WHERE hold_status = ''";
                                              $query_run = mysqli_query($con, $query); 
 
                                              if($total_borrowers = mysqli_num_rows($query_run))
@@ -65,13 +65,15 @@ if (isset($_SESSION['auth_admin']['admin_id']))
                          </li>
                          <?php 
                     $query_notif = "SELECT * FROM holds LEFT JOIN book ON holds.book_id = book.book_id
-                   LEFT JOIN user ON holds.user_id = user.user_id
+                   LEFT JOIN user ON holds.user_id = user.user_id WHERE hold_status = ''
                    ORDER BY hold_id DESC";
                       $query_run = mysqli_query($con, $query_notif);
                       if(mysqli_num_rows($query_run) > 0 )
                       {
                                 foreach($query_run as $holdlist)
                                 {
+                                   $hold_book = $holdlist['hold_id'];
+                                   $book_hold = $holdlist['book_id'];
                     ?>
                          <li>
                               <hr class="dropdown-divider" />
@@ -100,9 +102,9 @@ if (isset($_SESSION['auth_admin']['admin_id']))
                     }
                 ?>
 
-                         <li class="dropdown-footer">
+                         <!-- <li class="dropdown-footer">
                               <a href="#">Show all notifications</a>
-                         </li>
+                         </li> -->
 
                     </ul>
 
@@ -195,8 +197,13 @@ if (isset($_SESSION['auth_admin']['admin_id']))
  
       if($query_run)
       {
+          $update_copies = mysqli_query($con,"SELECT * FROM book WHERE book_id = '$book_hold' ");
+          $copies_row= mysqli_fetch_assoc($update_copies);
           
+          $book_copies = $copies_row['copy'];
+          $new_book_copies = $book_copies + 1;
 
+          mysqli_query($con,"UPDATE book SET copy = '$new_book_copies' where book_id = '$book_hold' ");
 
 
 
@@ -221,15 +228,13 @@ if (isset($_SESSION['auth_admin']['admin_id']))
 {
      $holdbook_id = mysqli_real_escape_string($con, $_POST['done']);
 
-               $query = "INSERT INTO holds(hold_status) VALUES('approved') WHERE hold_id ='$holdbook_id'";
+               $query = "UPDATE `holds` SET hold_status='approved' WHERE hold_id ='$holdbook_id'";
                $query_run = mysqli_query($con, $query);
 
                if($query_run)
                {
                     
-                    $_SESSION['message_success'] = 'Hold Book approved';
-                    header("Location: index.php");
-                    exit(0);
+                    echo "<script>alert('Book approved successfully'); window.location='index.php'</script>";
                }
                else
                {
@@ -238,7 +243,5 @@ if (isset($_SESSION['auth_admin']['admin_id']))
                     exit(0);
                }
      }
-     else
-     {
-               
-     }
+    
+     ?>

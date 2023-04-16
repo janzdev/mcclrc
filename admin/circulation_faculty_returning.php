@@ -94,7 +94,7 @@ $user_row = mysqli_fetch_array($user_query);
 								//$due_date = date('F j, Y g:i a', $due_date);
 								///$checkout = date('m/d/Y', strtotime("+1 day", strtotime($due_date)));
 								
-									$penalty_amount_query= mysqli_query($con,"select * from penalty order by penalty_id DESC ");
+									$penalty_amount_query= mysqli_query($con,"SELECT * FROM penalty WHERE penalty_id = 2");
 									$penalty_amount = mysqli_fetch_assoc($penalty_amount_query);
 									
 									if ($date_returned > $due_date) {

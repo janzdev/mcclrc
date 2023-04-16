@@ -31,7 +31,7 @@ if($_SESSION['auth_role'] != "0")
                     $name_hold = $_SESSION['auth_stud']['stud_id'];
                     $query = "SELECT * FROM holds LEFT JOIN book ON holds.book_id = book.book_id
                    
-                    WHERE user_id = '$name_hold' ORDER BY hold_id DESC";
+                    WHERE user_id = '$name_hold' and hold_status = '' ORDER BY hold_id DESC";
 
 
                   

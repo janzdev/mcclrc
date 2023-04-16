@@ -147,7 +147,7 @@ $faculty_row = mysqli_fetch_array($faculty_query);
 
                                              <?php
 							
-							$allowable_days_query= mysqli_query($con,"select * from allowed_days order by allowed_days_id DESC ");
+							$allowable_days_query= mysqli_query($con,"SELECT * FROM allowed_days WHERE allowed_days_id = 2 ");
 							$allowable_days_row = mysqli_fetch_assoc($allowable_days_query);
 							
 							$timezone = "Asia/Manila";
@@ -179,7 +179,7 @@ $faculty_row = mysqli_fetch_array($faculty_query);
 									
 									$bookCount = mysqli_fetch_assoc($bookCountQuery);
 									
-									$allowed_book_query= mysqli_query($con,"select * from allowed_book order by allowed_book_id DESC ");
+									$allowed_book_query= mysqli_query($con,"SELECT * FROM allowed_book WHERE allowed_book_id = 2 ");
 									$allowed = mysqli_fetch_assoc($allowed_book_query);
 									
 									if ($countBorrowed['books_allowed'] == $allowed['qntty_books']){
@@ -188,7 +188,7 @@ $faculty_row = mysqli_fetch_array($faculty_query);
 										echo "<script>alert('Book Already Borrowed!'); window.location='circulation_faculty_borrowing.php?employee_id=".$employee_id."'</script>";
 									}else{
 										
-									$update_copies = mysqli_query($con,"SELECT * from book where book_id = '$book_id' ");
+									$update_copies = mysqli_query($con,"SELECT * FROM book WHERE book_id = '$book_id' ");
 									$copies_row= mysqli_fetch_assoc($update_copies);
 									
 									$book_copies = $copies_row['copy'];
