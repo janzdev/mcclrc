@@ -58,11 +58,23 @@ if(isset($_POST['delete_student']))
 {
      $user_id = mysqli_real_escape_string($con, $_POST['delete_student']);
 
+     $check_img_query = "SELECT * FROM user WHERE user_id ='$user_id'";
+     $img_result = mysqli_query($con, $check_img_query);
+     $result_data = mysqli_fetch_array($img_result);
+
+     $student_filename = $result_data['student_id_img'];
+
      $query = "DELETE FROM user WHERE user_id ='$user_id'";
      $query_run = mysqli_query($con, $query);
 
      if($query_run)
      {
+
+          if(file_exists('../uploads/student_id/'.$student_filename))
+          {
+               unlink("../uploads/student_id/".$student_filename);
+          }
+
           $_SESSION['message_success'] = 'Student deleted successfully';
           header("Location: user_student_approval.php");
           exit(0);
@@ -96,14 +108,41 @@ if(isset($_POST['update_student']))
      $contact_person_no = mysqli_real_escape_string($con, $_POST['contact_person_number']);
      $username = mysqli_real_escape_string($con, $_POST['username']);
 
-    
+     $old_student_id_filename = $_POST['old_student_id_img'];
+
+     $student_id_img = $_FILES['student_id_img']['name'];
+
+     $update_student_id_filename = "";
+
+     if($student_id_img != NULL)
+     {
+           // Rename the Image
+           $student_id_extension = pathinfo($student_id_img, PATHINFO_EXTENSION);
+           $student_id_filename = time().'.'.$student_id_extension;
+
+           $update_student_id_filename =  $student_id_filename;
+     }
+     else
+     {
+          $update_student_id_filename = $old_student_id_filename;
+     }
      
 
-     $query = "UPDATE user SET lastname='$lastname', firstname='$firstname', middlename='$middlename', nickname='$nickname', gender='$gender', course='$course', address='$address', cell_no='$cellphone_number', birthdate='$birthdate', email='$email', year_level='$year_level', student_id_no='$student_id_no', contact_person='$contact_person', contact_person_no='$contact_person_no', username='$username' WHERE user_id = '$user_id'";
+     $query = "UPDATE user SET lastname='$lastname', firstname='$firstname', middlename='$middlename', nickname='$nickname', gender='$gender', course='$course', address='$address', cell_no='$cellphone_number', birthdate='$birthdate', email='$email', year_level='$year_level', student_id_no='$student_id_no', student_id_img='$update_student_id_filename', contact_person='$contact_person', contact_person_no='$contact_person_no', username='$username' WHERE user_id = '$user_id'";
      $query_run = mysqli_query($con, $query);
 
      if($query_run)
      {
+
+          if($student_id_img != NULL)
+          {
+               if(file_exists('../uploads/student_id/'.$old_student_id_filename))
+               {
+                    unlink("../uploads/student_id/".$old_student_id_filename);
+               }
+          }
+          move_uploaded_file($_FILES['student_id_img']['tmp_name'], '../uploads/student_id/'.$student_id_filename);
+
           $_SESSION['message_success'] = 'Student Updated successfully';
           header("Location: user_student.php");
           exit(0);

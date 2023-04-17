@@ -41,7 +41,17 @@ include('includes/sidebar.php');
                     <div class="card">
                          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                              <img src="assets/img/admin.png" alt="" class="rounded-circle">
+
+                              <center>
+                                   <?php if($user['student_id_img'] != ""): ?>
+                                   <img src="../uploads/student_id/<?php echo $user['student_id_img']; ?>" alt=""
+                                        width="250px" height="250px">
+                                   <?php else: ?>
+                                   <img src="assets/img/admin.png" class="rounded-circle" alt="" width="250px"
+                                        height="250px">
+                                   <?php endif; ?>
+                              </center>
+
 
                               <h2><?=$user['firstname'].' '.$user['lastname'];?></h2>
                               <p><?=$user['student_id_no'];?></p>

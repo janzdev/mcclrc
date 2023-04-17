@@ -13,7 +13,8 @@ include('./includes/sidebar.php');
                <nav>
                     <ol class="breadcrumb">
                          <li class="breadcrumb-item"><a href="users.php">Users</a></li>
-                         <li class="breadcrumb-item active">Students</li>
+                         <li class="breadcrumb-item"><a href="user_student.php">Students</a></li>
+                         <li class="breadcrumb-item active">Student Approval</li>
                     </ol>
                </nav>
           </div>
@@ -24,9 +25,10 @@ include('./includes/sidebar.php');
                <div class="col-lg-12">
                     <div class="card">
                          <div class="card-header d-flex justify-content-between align-items-center">
-                              <h5 class="m-0 text-dark fw-semibold">Students</h5>
+                              <h5 class="m-0 text-dark fw-semibold">Students Approval</h5>
 
-
+                              <a href="user_student.php" class="btn btn-primary">
+                                   Back</a>
                          </div>
                          <div class="card-body">
                               <div class="table-responsive mt-3">
@@ -51,15 +53,19 @@ include('./includes/sidebar.php');
                                                   {
                                                        ?>
                                              <tr>
+
                                                   <td>
-                                                       <?php if($user['student_id_img'] != ""): ?>
-                                                       <img src="../uploads/student_id/<?php echo $user['student_id_img']; ?>"
-                                                            alt="" width="250px" height="250px">
-                                                       <?php else: ?>
-                                                       <img src="uploads/books_img/book_image.jpg" alt="" width="250px"
-                                                            height="250px">
-                                                       <?php endif; ?>
+                                                       <center>
+                                                            <?php if($user['student_id_img'] != ""): ?>
+                                                            <img src="../uploads/student_id/<?php echo $user['student_id_img']; ?>"
+                                                                 alt="" width="200px" height="250px">
+                                                            <?php else: ?>
+                                                            <img src="uploads/books_img/book_image.jpg" alt=""
+                                                                 width="200px" height="250px">
+                                                            <?php endif; ?>
+                                                       </center>
                                                   </td>
+
                                                   <td>
                                                        <?=$user['firstname'].' '.$user['middlename'].' '.$user['lastname']?>
                                                   </td>

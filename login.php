@@ -1,18 +1,18 @@
 <?php 
 session_start();
 
-if(isset($_SESSION['auth']))
-{
-  if(!isset($_SESSION['message']))
-  {
-    $_SESSION['message_error'] = "You are already logged in";
-  }
+// if(isset($_SESSION['auth']))
+// {
+//   if(!isset($_SESSION['message']))
+//   {
+//     $_SESSION['message_error'] = "You are already logged in";
+//   }
     
-    header("Location: index.php");
-    exit(0);
+//     header("Location: index.php");
+//     exit(0);
   
  
-}
+// }
 
 include('./admin/config/dbcon.php');
 ?>

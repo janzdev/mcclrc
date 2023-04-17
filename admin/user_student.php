@@ -26,11 +26,11 @@ include('./includes/sidebar.php');
                          <div class="card-header d-flex justify-content-between align-items-center">
                               <h5 class="m-0 text-dark fw-semibold">Students</h5>
 
-                              <form action="" method="POST"></form>
+
 
                               <a href="user_student_approval.php" class="btn btn-primary"><i
                                         class="bi bi-people-fill"></i>
-                                   New Signup</a>
+                                   Student Approval</a>
                               <a href="user_student_add.php" class="btn btn-primary"><i class="bi bi-plus-circle"></i>
                                    Add
                                    Student</a>
@@ -51,7 +51,7 @@ include('./includes/sidebar.php');
                                         </thead>
                                         <tbody>
                                              <?php
-                                             $query = "SELECT * FROM user";
+                                             $query = "SELECT * FROM user WHERE status = 'approved' ORDER BY user_id ASC";
                                              $query_run = mysqli_query($con, $query);
                                              
                                              if(mysqli_num_rows($query_run))

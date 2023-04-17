@@ -35,7 +35,7 @@ include('./includes/sidebar.php');
                                    {
                                        $user = mysqli_fetch_array($query_run);
                                         ?>
-                              <form action="user_student_code.php" method="POST">
+                              <form action="user_student_code.php" method="POST" enctype="multipart/form-data">
 
                                    <div class="row d-flex justify-content-center mt-2">
                                         <input type="hidden" name="user_id" value="<?=$user['user_id']?>">
@@ -167,7 +167,16 @@ include('./includes/sidebar.php');
 
                                    <div class="row d-flex justify-content-center">
 
-                                        <div class="col-12 col-md-6">
+                                        <div class="col-12 col-md-3">
+                                             <div class="mb-2 input-group-sm">
+                                                  <label for="">Student ID Picture</label>
+                                                  <input type="hidden" name="old_student_id_img"
+                                                       value="<?=$user['student_id_img'];?>">
+                                                  <input type="file" name="student_id_img" class="form-control"
+                                                       autocomplete="off">
+                                             </div>
+                                        </div>
+                                        <div class="col-12 col-md-3">
                                              <div class="mb-2 input-group-sm">
                                                   <label for="">Contact Person</label>
                                                   <input type="text" name="contact_person"
