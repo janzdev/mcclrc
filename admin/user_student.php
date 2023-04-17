@@ -28,6 +28,9 @@ include('./includes/sidebar.php');
 
                               <form action="" method="POST"></form>
 
+                              <a href="user_student_approval.php" class="btn btn-primary"><i
+                                        class="bi bi-people-fill"></i>
+                                   New Signup</a>
                               <a href="user_student_add.php" class="btn btn-primary"><i class="bi bi-plus-circle"></i>
                                    Add
                                    Student</a>
@@ -42,9 +45,7 @@ include('./includes/sidebar.php');
                                                   <th>Gender</th>
                                                   <th>Course</th>
                                                   <th>Year Level</th>
-                                                  <!-- <th>Address</th>
-                                                  <th>Contact No.</th>
-                                                  <th>Email Adress</th> -->
+
                                                   <th>Action</th>
                                              </tr>
                                         </thead>

@@ -20,8 +20,9 @@ if(isset($_POST['register_btn']))
             $student_id_no = mysqli_real_escape_string($con, $_POST['student_id_no']);          
             $password = mysqli_real_escape_string($con, $_POST['password']);
             $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
+            $student_id_img = $_FILES['student_id_img']['name'];
             
-            if(empty($lastname) || empty($firstname) || empty($middlename) || empty($nickname) || empty($gender) || empty( $birthdate) || empty( $address) || empty($cell_no) || empty($contact_person) || empty($contact_person_no) || empty( $email) || empty($year_level) || empty($course) || empty($student_id_no) || empty($password) || empty($cpassword) )
+            if(empty($lastname) || empty($firstname) || empty($middlename) || empty($nickname) || empty($gender) || empty( $birthdate) || empty( $address) || empty($cell_no) || empty($contact_person) || empty($contact_person_no) || empty( $email) || empty($year_level) || empty($course) || empty($student_id_no) || empty($password) || empty($cpassword) || empty($student_id_img) )
             {
               $_SESSION['message_error'] = "Please fill up all fields";
               header("Location:signup.php");
@@ -46,22 +47,30 @@ if(isset($_POST['register_btn']))
                 }
                 else
                 {
-                    $student_query = "INSERT INTO user(lastname, firstname, middlename, nickname, gender, course, address, cell_no, birthdate, email, year_level, student_id_no, contact_person, contact_person_no, password, cpassword, user_added) VALUES('$lastname', '$firstname', '$middlename', '$nickname', '$gender', '$course', '$address', '$cell_no', '$birthdate', '$email', '$year_level', '$student_id_no', '$contact_person', '$contact_person_no', md5('$password'), md5('$cpassword'), NOW())";
-                    $student_query_run = mysqli_query($con, $student_query);
-                    
-                    if($student_query_run)
+                    if( $student_id_img != "")
                     {
-                      $_SESSION['message_success'] = "Register Successfully";
-                      header("Location:login.php");
-                      exit(0);
-                      
+                        $student_extension = pathinfo($student_id_img, PATHINFO_EXTENSION);
+                        $student_filename = time().'.'. $student_extension;
+    
+                        $student_query = "INSERT INTO user(lastname, firstname, middlename, nickname, gender, course, student_id_img, address, cell_no, birthdate, email, year_level, student_id_no, contact_person, contact_person_no, password, cpassword, status, user_added) VALUES('$lastname', '$firstname', '$middlename', '$nickname', '$gender', '$course', '$student_filename', '$address', '$cell_no', '$birthdate', '$email', '$year_level', '$student_id_no', '$contact_person', '$contact_person_no', md5('$password'), md5('$cpassword'), 'pending', NOW())";
+                        $student_query_run = mysqli_query($con, $student_query);
+                        
+                        if($student_query_run)
+                        {
+                          move_uploaded_file($_FILES['student_id_img']['tmp_name'], 'uploads/student_id/'. $student_filename);
+    
+                          $_SESSION['message_success'] = "Register Successfully";
+                          header("Location:login.php");
+                          exit(0);
+                        }
+                        else
+                        {
+                          $_SESSION['message_error'] = "Something Went Wrong";
+                          header("Location:signup.php");
+                          exit(0);
+                        }
                     }
-                    else
-                    {
-                      $_SESSION['message_error'] = "Something Went Wrong";
-                      header("Location:signup.php");
-                      exit(0);
-                    }
+                  
                 }
             }
             else

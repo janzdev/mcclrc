@@ -78,7 +78,7 @@ include('./admin/config/dbcon.php');
 
           <!-- Multi Step Form end -->
           <div class="form-outer">
-               <form action="./signupcode.php" method="POST">
+               <form action="./signupcode.php" method="POST" enctype="multipart/form-data">
                     <!-- First Slide Page start-->
                     <div class="page slide-page">
                          <div class="title">Personal Details:</div>
@@ -164,7 +164,11 @@ include('./admin/config/dbcon.php');
                               </select>
                          </div>
 
-                         <div class="title">Contact Info:</div>
+                         <div class="field">
+                              <div class="label">Student ID</div>
+                              <input type="file" name="student_id_img" id="">
+                         </div>
+
 
                          <div class="field">
                               <div class="label">Email</div>
@@ -227,6 +231,8 @@ include('./admin/config/dbcon.php');
                               <div class="label">Confirm Password</div>
                               <input type="password" name="cpassword" />
                          </div>
+
+
 
                          <div class="field btns">
                               <button class="prev-4 prev">Previous</button>

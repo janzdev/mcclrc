@@ -97,7 +97,7 @@ include('./includes/sidebar.php');
                                                                       <div class="btn-group"
                                                                            style="background: #DFF6FF;  ">
                                                                            <!-- View Book Action-->
-                                                                           <a href="book_view.php?id=<?=$book['book_id']; ?>"
+                                                                           <a href="book_views.php?id=<?=$book['book_id']; ?>"
                                                                                 name=""
                                                                                 class="viewBookBtn btn btn-sm  border text-primary"
                                                                                 data-bs-toggle="tooltip"
