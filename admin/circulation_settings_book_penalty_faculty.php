@@ -37,7 +37,7 @@
                                              </div>
                                              <div class="modal-body ">
                                                   <?php
-												$query2=mysqli_query($con,"select * from penalty where penalty_id='$penalty_id'")or die(mysqli_error());
+												$query2=mysqli_query($con,"select * from penalty where penalty_id='$penalty_id'");
 												$row44=mysqli_fetch_array($query2);
 												?>
                                                   <form method="post" enctype="multipart/form-data"
@@ -61,7 +61,7 @@
                                              <div class="modal-footer">
                                                   <button type="button" class="btn btn-secondary"
                                                        data-bs-dismiss="modal">Cancel</button>
-                                                  <button type="submit" name="update_penalty"
+                                                  <button type="submit" name="faculty_update_penalty"
                                                        class="btn btn-primary">Update
                                                        Penalty</button>
                                              </div>
@@ -72,19 +72,19 @@
 
 
                               <?php
-													if (isset($_POST['update_penalty'])) {
-													
-													$penalty_amount1 = $_POST['penalty_amount'];
-													
-													
-														mysqli_query($con," UPDATE penalty SET penalty_amount='$penalty_amount1' ") or die (mysqli_error());
-													
-													
-														echo "<script>alert('Book Penalty Updated Successfully');window.location='circulation_settings.php'</script>";
-													
-														
-													}
-												?>
+                                   if (isset($_POST['faculty_update_penalty'])) {
+                                   
+                                   $penalty_amount1 = $_POST['penalty_amount'];
+                                   
+                                   
+                                        mysqli_query($con," UPDATE penalty SET penalty_amount='$penalty_amount1' WHERE penalty_id = '$penalty_id' ") ;
+                                   
+                                   
+                                        echo "<script>alert('Book Penalty Updated Successfully');window.location='circulation_settings.php'</script>";
+                                   
+                                        
+                                   }
+                              ?>
 
           </div>
      </div>

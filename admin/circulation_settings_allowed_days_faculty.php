@@ -7,10 +7,10 @@
                <table class="table table-striped mt-3">
                     <tbody>
                          <?php
-							$penalty_query= mysqli_query($con,"SELECT * FROM allowed_days WHERE allowed_days_id = 2");
-							while ($faculty= mysqli_fetch_array ($penalty_query) ){
-							$faculty_allowed_days_id=$faculty['allowed_days_id'];
-							?>
+                         $penalty_query= mysqli_query($con,"SELECT * FROM allowed_days WHERE allowed_days_id = 2");
+                         while ($faculty= mysqli_fetch_array ($penalty_query) ){
+                         $faculty_allowed_days_id=$faculty['allowed_days_id'];
+                         ?>
                          <tr>
                               <td><?php echo $faculty['no_of_days']; ?>&nbsp;day/s</td>
                               <td style="width: 10px;">
@@ -37,9 +37,9 @@
                                              </div>
                                              <div class="modal-body">
                                                   <?php
-												$query2=mysqli_query($con,"select * from allowed_days where allowed_days_id='$faculty_allowed_days_id'");
-												$row44=mysqli_fetch_array($query2);
-												?>
+                                                  $query2=mysqli_query($con,"select * from allowed_days where allowed_days_id='$faculty_allowed_days_id'");
+                                                  $row44=mysqli_fetch_array($query2);
+                                                  ?>
                                                   <form method="post" enctype="multipart/form-data"
                                                        class="form-horizontal  ">
                                                        <div class="form-group d-flex align-items-center"
@@ -69,20 +69,20 @@
                                    </div>
                               </div>
                               <?php
-													if (isset($_POST['update_faculty'])) {
-													
-													$faculty_no_of_days1 = $_POST['no_of_days'];
-													
-													
-														mysqli_query($con," UPDATE allowed_days SET no_of_days='$faculty_no_of_days1' ");
-                                                                 
-                                                                     
-														echo "<script>alert('Allowed Book Updated Successfully');window.location='circulation_settings.php'</script>";
-                                                                     
-													
-														
-													}
-												?>
+                                   if (isset($_POST['update_faculty'])) {
+                                   
+                                   $faculty_no_of_days1 = $_POST['no_of_days'];
+                                   
+                                   
+                                        mysqli_query($con," UPDATE allowed_days SET no_of_days='$faculty_no_of_days1' WHERE allowed_days_id = '$faculty_allowed_days_id' ");
+                                   
+                                        
+                                        echo "<script>alert('Allowed Book Updated Successfully');window.location='circulation_settings.php'</script>";
+                                        
+                                   
+                                        
+                                   }
+                              ?>
 
           </div>
 

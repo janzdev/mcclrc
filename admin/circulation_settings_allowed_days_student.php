@@ -7,11 +7,10 @@
                <table class="table table-striped mt-3">
                     <tbody>
                          <?php
-							$penalty_query= mysqli_query($con,"SELECT * FROM allowed_days WHERE allowed_days_id = 1 ");
-							while ($student = mysqli_fetch_array ($penalty_query) ){
-							$student_allowed_days_id=$student['allowed_days_id'];
-                                       
-							?>
+                         $penalty_query= mysqli_query($con,"SELECT * FROM allowed_days WHERE allowed_days_id = 1 ");
+                         while ($student = mysqli_fetch_array ($penalty_query) ){
+                         $student_allowed_days_id=$student['allowed_days_id'];                                      
+					?>
 
                          <tr>
                               <td><?php echo $student['no_of_days']; ?>&nbsp;day/s</td>

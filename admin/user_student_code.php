@@ -13,18 +13,18 @@ if(isset($_POST['deny']))
      $query_run = mysqli_query($con, $query);
 
      if($query_run)
-          {
-               
-               $_SESSION['message_success'] = 'Student Denied ';
-               header("Location: user_student_approval.php");
-               exit(0);
-          }
-          else
-          {
-               $_SESSION['message_error'] = 'Student not Denied';
-               header("Location: user_student_approval.php");
-               exit(0);
-          }
+     {
+          
+          $_SESSION['message_success'] = 'Student Denied ';
+          header("Location: user_student_approval.php");
+          exit(0);
+     }
+     else
+     {
+          $_SESSION['message_error'] = 'Student not Denied';
+          header("Location: user_student_approval.php");
+          exit(0);
+     }
 }
 
 
@@ -37,23 +37,23 @@ if(isset($_POST['approved']))
      $query_run = mysqli_query($con, $query);
 
      if($query_run)
-          {
-               
-               $_SESSION['message_success'] = 'Student approved successfully';
-               header("Location: user_student_approval.php");
-               exit(0);
-          }
-          else
-          {
-               $_SESSION['message_error'] = 'Student not approved';
-               header("Location: user_student_approval.php");
-               exit(0);
-          }
+     {
+          
+          $_SESSION['message_success'] = 'Student approved successfully';
+          header("Location: user_student_approval.php");
+          exit(0);
+     }
+     else
+     {
+          $_SESSION['message_error'] = 'Student not approved';
+          header("Location: user_student_approval.php");
+          exit(0);
+     }
 }
 
 
 
-
+// Delete Action
 if(isset($_POST['delete_student']))
 {
      $user_id = mysqli_real_escape_string($con, $_POST['delete_student']);
@@ -76,17 +76,18 @@ if(isset($_POST['delete_student']))
           }
 
           $_SESSION['message_success'] = 'Student deleted successfully';
-          header("Location: user_student_approval.php");
+          header("Location: user_student.php");
           exit(0);
      }
      else
      {
           $_SESSION['message_error'] = 'Student not deleted';
-          header("Location: user_student_approval.php");
+          header("Location: user_student.php");
           exit(0);
      }
 }
 
+// Update Action
 if(isset($_POST['update_student']))
 {
     
@@ -156,7 +157,7 @@ if(isset($_POST['update_student']))
     
 } 
 
-// Add Student
+// Add Student Action
 if(isset($_POST['add_student']))
 {
     

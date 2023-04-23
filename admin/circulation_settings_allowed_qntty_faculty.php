@@ -1,32 +1,32 @@
 <div class="col-12 col-md-4  mt-5">
      <div class="card">
           <div class="card-header text-dark  fw-semibold">
-               Allowed Books <span class="text-muted small">(per user)</span>
+               Allowed Books <span class="text-muted small">(per faculty staff)</span>
           </div>
           <div class="card-body">
                <table class="table table-striped mt-3">
                     <tbody>
                          <?php
-							$allowed_book_query= mysqli_query($con,"SELECT * FROM allowed_book WHERE allowed_book_id = 2 ");
-							while ($row11= mysqli_fetch_array ($allowed_book_query) ){
-							$id=$row11['allowed_book_id'];
-							?>
+                         $allowed_book_query= mysqli_query($con,"SELECT * FROM allowed_book WHERE allowed_book_id = 3 ");
+                         while ($faculty= mysqli_fetch_array ($allowed_book_query) ){
+                         $faculty_allowed_book=$faculty['allowed_book_id'];
+                         ?>
                          <tr>
-                              <td><?php echo $row11['qntty_books'];?>&nbsp;book/s</td>
+                              <td><?php echo $faculty['qntty_books'];?>&nbsp;book/s</td>
 
                               <td style="width: 10px;">
                                    <!-- Modal Button Trigger -->
                                    <span data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Book/s">
-                                        <a href="#book_qntty<?php echo $id;?>" type="button"
+                                        <a href="#book_qntty<?php echo $faculty_allowed_book;?>" type="button"
                                              class="btn btn-info text-white" data-bs-toggle="modal"
-                                             data-bs-target="#book_qntty<?php echo $id;?>">
+                                             data-bs-target="#book_qntty<?php echo $faculty_allowed_book;?>">
                                              <i class="bi bi-pencil-square "></i>
                                         </a>
                                    </span>
 
                               </td>
                               <!-- Modal -->
-                              <div class="modal fade" id="book_qntty<?php echo $id;?>" tabindex="-1"
+                              <div class="modal fade" id="book_qntty<?php echo $faculty_allowed_book;?>" tabindex="-1"
                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                                    <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -39,9 +39,9 @@
                                              </div>
                                              <div class="modal-body">
                                                   <?php
-												$query1=mysqli_query($con,"select * from allowed_book where allowed_book_id='$id'")or die(mysqli_error());
-												$row22=mysqli_fetch_array($query1);
-												?>
+                                                  $query1=mysqli_query($con,"SELECT * FROM allowed_book WHERE allowed_book_id='$faculty_allowed_book'");
+                                                  $row22=mysqli_fetch_array($query1);
+                                                  ?>
                                                   <form method="post" enctype="multipart/form-data"
                                                        class="form-horizontal">
                                                        <div class="form-group d-flex align-items-center"
@@ -63,7 +63,7 @@
                                              <div class="modal-footer">
                                                   <button type="button" class="btn btn-secondary"
                                                        data-bs-dismiss="modal">Cancel</button>
-                                                  <button type="submit" name="update_book_qntty"
+                                                  <button type="submit" name="faculty_update_book_qntty"
                                                        class="btn btn-primary">Update Book/s</button>
                                              </div>
                                              </form>
@@ -72,12 +72,12 @@
                               </div>
 
                               <?php
-												if (isset($_POST['update_book_qntty'])) {
+												if (isset($_POST['faculty_update_book_qntty'])) {
 													
 													$qntty_books = $_POST['qntty_books'];
 													
 													
-														mysqli_query($con," UPDATE allowed_book SET qntty_books='$qntty_books' ") or die (mysqli_error());
+														mysqli_query($con," UPDATE allowed_book SET qntty_books='$qntty_books'  WHERE allowed_book_id = '$faculty_allowed_book'  ");
 													
 													
 														echo "<script>alert('Book Quantity Updated Successfully');window.location='circulation_settings.php'</script>";

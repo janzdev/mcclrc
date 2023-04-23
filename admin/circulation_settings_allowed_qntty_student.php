@@ -1,7 +1,7 @@
 <div class="col-12 col-md-4  mt-5">
      <div class="card">
           <div class="card-header text-dark  fw-semibold">
-               Allowed Books <span class="text-muted small">(per user)</span>
+               Allowed Books <span class="text-muted small">(per student)</span>
           </div>
           <div class="card-body">
                <table class="table table-striped mt-3">
@@ -63,7 +63,7 @@
                                              <div class="modal-footer">
                                                   <button type="button" class="btn btn-secondary"
                                                        data-bs-dismiss="modal">Cancel</button>
-                                                  <button type="submit" name="update_book_qntty"
+                                                  <button type="submit" name="student_update_book_qntty"
                                                        class="btn btn-primary">Update Book/s</button>
                                              </div>
                                              </form>
@@ -72,12 +72,12 @@
                               </div>
 
                               <?php
-												if (isset($_POST['update_book_qntty'])) {
+												if (isset($_POST['student_update_book_qntty'])) {
 													
 													$qntty_books = $_POST['qntty_books'];
 													
 													
-														mysqli_query($con," UPDATE allowed_book SET qntty_books='$qntty_books' ") or die (mysqli_error());
+														mysqli_query($con," UPDATE allowed_book SET qntty_books='$qntty_books'  WHERE allowed_book_id = '$id'");
 													
 													
 														echo "<script>alert('Book Quantity Updated Successfully');window.location='circulation_settings.php'</script>";

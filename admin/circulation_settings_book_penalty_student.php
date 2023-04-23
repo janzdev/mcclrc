@@ -7,10 +7,10 @@
                <table class="table table-striped mt-3">
                     <tbody>
                          <?php
-							$penalty_query= mysqli_query($con,"SELECT * FROM penalty WHERE penalty_id= 1 ");
-							while ($row33= mysqli_fetch_array ($penalty_query) ){
-							$penalty_id=$row33['penalty_id'];
-							?>
+                         $penalty_query= mysqli_query($con,"SELECT * FROM penalty WHERE penalty_id= 1 ");
+                         while ($row33= mysqli_fetch_array ($penalty_query) ){
+                         $penalty_id=$row33['penalty_id'];
+					?>
                          <tr>
                               <td><?php echo '₱&nbsp;'.' '.$row33['penalty_amount']."".'.00'; ?></td>
                               <td style="width: 10px;">
@@ -61,7 +61,7 @@
                                              <div class="modal-footer">
                                                   <button type="button" class="btn btn-secondary"
                                                        data-bs-dismiss="modal">Cancel</button>
-                                                  <button type="submit" name="update_penalty"
+                                                  <button type="submit" name="student_update_penalty"
                                                        class="btn btn-primary">Update
                                                        Penalty</button>
                                              </div>
@@ -72,19 +72,19 @@
 
 
                               <?php
-													if (isset($_POST['update_penalty'])) {
-													
-													$penalty_amount1 = $_POST['penalty_amount'];
-													
-													
-														mysqli_query($con," UPDATE penalty SET penalty_amount='$penalty_amount1' ") or die (mysqli_error());
-													
-													
-														echo "<script>alert('Book Penalty Updated Successfully');window.location='circulation_settings.php'</script>";
-													
-														
-													}
-												?>
+                                   if (isset($_POST['student_update_penalty'])) {
+                                   
+                                   $penalty_amount1 = $_POST['penalty_amount'];
+                                   
+                                   
+                                        mysqli_query($con," UPDATE penalty SET penalty_amount='$penalty_amount1' WHERE penalty_id = '$penalty_id'");
+                                   
+                                   
+                                        echo "<script>alert('Book Penalty Updated Successfully');window.location='circulation_settings.php'</script>";
+                                   
+                                        
+                                   }
+                              ?>
 
           </div>
      </div>
