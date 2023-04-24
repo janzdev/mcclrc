@@ -23,6 +23,28 @@ if($_SESSION['auth_role'] != "0")
           <div class="col-12 ">
                <div class="card  mt-4 " data-aos="fade-up" style="height: 70vh">
 
+                    <!-- <?php 
+                     $name_hold = $_SESSION['auth_stud']['stud_id'];
+                          $query = "SELECT * FROM holds WHERE hold_status = 'approved' AND user_id = '$name_hold'";
+                          $query_run = mysqli_query($con, $query);
+
+
+                    
+                         
+
+                         if($query_run)
+                         {                             
+                              echo "<script>alert('Book approved successfully'); window.location='notification.php'</script>";
+                         }
+                         else
+                         {
+                              $_SESSION['message_error'] = 'Hold Book not approved';
+                              header("Location: notification.php");
+                              exit(0);
+                         }
+                   
+                    ?> -->
+
 
                     <?php
                          $name_hold = $_SESSION['auth_stud']['stud_id'];
@@ -58,7 +80,7 @@ if($_SESSION['auth_role'] != "0")
                     <div class="alert alert-info text-center" role="alert">
                          <?php  echo  'Please return this Book <b>'.$borrow_row['title'].'</b> before '.date("M d, Y",strtotime($borrow_row['due_date'])); 
                                              
-                                                       ?>
+                         ?>
                     </div>
                     <?php  
                    

@@ -41,10 +41,19 @@ $name_session = $_SESSION['auth_stud']['stud_name'];
                                    <div class="card">
                                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                                             <img src="../assets/admin_profile/admin.png" alt="" class="rounded-circle">
+
+                                             <center>
+                                                  <?php if($row['student_id_img'] != ""): ?>
+                                                  <img src="uploads/student_id/<?php echo $row['student_id_img']; ?>"
+                                                       alt="" width="200px" height="250px">
+                                                  <?php else: ?>
+                                                  <img src="uploads/books_img/book_image.jpg" alt="" width="200px"
+                                                       height="250px">
+                                                  <?php endif; ?>
+                                             </center>
 
                                              <h2><?= $row['username']; ?></h2>
-                                             <h3>User</h3>
+                                             <h3>Student</h3>
 
                                         </div>
                                    </div>

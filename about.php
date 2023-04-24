@@ -76,7 +76,7 @@ include('includes/navbar.php');
                          <div class="col-md-7 col-lg-8 text-center text-md-start">
                               <!-- Copyright -->
                               <div class="p-3">
-                                   © 2022 Madridejos Community College
+                                   Madridejos Community College
                               </div>
 
                          </div>

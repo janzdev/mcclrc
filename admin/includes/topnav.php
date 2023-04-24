@@ -84,11 +84,11 @@ if (isset($_SESSION['auth_admin']['admin_id']))
                                    <h4><?=$holdlist['firstname'].' '.$holdlist['lastname'];?></h4>
                                    <p><?=$holdlist['title']?></p>
                                    <p><?=date("M d, Y h:i:s a",strtotime($holdlist['hold_date']));?></p>
-                                   <form action="" method="POST">
+                                   <form action="notification.php" method="POST">
                                         <button type="submit" value="<?=$holdlist['hold_id'];?>"
-                                             class="btn btn-primary btn-sm" name="done">Done</button>
+                                             class="btn btn-primary btn-sm" name="done">Accept</button>
                                         <button type="submit" value="<?=$holdlist['hold_id'];?>"
-                                             class="btn btn-danger btn-sm" name="cancel">Cancel</button>
+                                             class="btn btn-danger btn-sm" name="cancel">Delete</button>
                                    </form>
                               </div>
 

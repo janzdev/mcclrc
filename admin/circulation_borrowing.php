@@ -37,7 +37,7 @@ $user_row = mysqli_fetch_array($user_query);
                                    <form action="" method="POST">
                                         <div class="input-group mb-3 input-group-sm">
                                              <span class="input-group-text bg-primary text-white"
-                                                  id="basic-addon1">BARCODE</span>
+                                                  id="basic-addon1">ACCESSION NO.</span>
                                              <input type="text" name="barcode" class="form-control" placeholder=""
                                                   aria-label="Username" aria-describedby="basic-addon1" autofocus
                                                   required>
