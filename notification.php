@@ -20,30 +20,59 @@ if($_SESSION['auth_role'] != "0")
 
 <div class="container ">
      <div class="row ">
-          <div class="col-12 ">
+          <div class="col-12">
                <div class="card  mt-4 " data-aos="fade-up" style="height: 70vh">
+                    <?php 
+                    $query_notif = "SELECT * FROM holds LEFT JOIN book ON holds.book_id = book.book_id
+                   LEFT JOIN user ON holds.user_id = user.user_id WHERE hold_status = ''
+                   ORDER BY hold_id DESC";
+                      $query_run = mysqli_query($con, $query_notif);
+                      if(mysqli_num_rows($query_run) > 0 )
+                      {
+                                foreach($query_run as $holdlist)
+                                {
+                                   $hold_book = $holdlist['hold_id'];
+                                   $book_hold = $holdlist['book_id'];
+                                   $book_title = $holdlist['title'];
+                    ?>
 
-                    <!-- <?php 
+                    <?php 
+                    
+
+
+
                      $name_hold = $_SESSION['auth_stud']['stud_id'];
                           $query = "SELECT * FROM holds WHERE hold_status = 'approved' AND user_id = '$name_hold'";
                           $query_run = mysqli_query($con, $query);
 
-
+                         
                     
                          
 
                          if($query_run)
-                         {                             
-                              echo "<script>alert('Book approved successfully'); window.location='notification.php'</script>";
-                         }
-                         else
-                         {
-                              $_SESSION['message_error'] = 'Hold Book not approved';
-                              header("Location: notification.php");
-                              exit(0);
-                         }
-                   
-                    ?> -->
+                         {   
+                              ?>
+
+                    <div class="alert alert-info text-center" role="alert">
+                         <?php  echo  "This book <b>".$book_title."</b> now Available"; 
+                                             
+                         ?>
+
+                    </div>
+                    <?php
+                    }
+                    else
+                    {
+                    $_SESSION['message_error'] = 'Hold Book not approved';
+                    header("Location: notification.php");
+                    exit(0);
+                    }
+
+
+                    }
+                    }
+
+                    ?>
 
 
                     <?php
@@ -118,9 +147,9 @@ if($_SESSION['auth_role'] != "0")
                else
                {
                     ?>
-                    <div class="alert alert-info text-center" role="alert">
+                    <!-- <div class="alert alert-info text-center" role="alert">
                          No Notifications
-                    </div>
+                    </div> -->
                     <?php
                }
 

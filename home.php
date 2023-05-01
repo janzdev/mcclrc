@@ -2,7 +2,7 @@
 include('includes/header.php');
 include('includes/navbar.php');
 ?>
-<div class="jumbotron h-50">
+<div class="jumbotron h-50 " style="background-color: #0D4C92">
      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
@@ -14,7 +14,7 @@ include('includes/navbar.php');
           </div>
           <div class="carousel-inner">
                <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="assets/img/mcc-front.jpg" class="d-block w-100 h-100 " alt="...">
+                    <img src="assets/img/mccfront.jpg" class="d-block w-100 h-100 " alt="...">
                     <!-- <div class="carousel-caption d-none d-md-block">
                          <h5>First slide label</h5>
                          <p>Some representative placeholder content for the first slide.</p>
@@ -46,7 +46,23 @@ include('includes/navbar.php');
                <span class="visually-hidden">Next</span>
           </button>
      </div>
+     <!-- Services -->
+     <div class="container bg-white mt-3">
+          <h3 class="fs-3"><a href="services.php" class="text-black text-decoration-none">Services</a></h3>
+          <h4 class="text-center fs-2">MCCLRC OPENING DAY AND TIME</h4>
+          <div class="row">
+
+               <div class="col-md-6 p-5">
+                    <h4 class="fs-1">Monday - Saturdays:</h4>
+                    <h4 class="fs-3">8:00 AM 5:00 PM (No Noon Break)</h4>
+               </div>
+               <div class="col-md-6">
+                    <img src="assets/img/undraw_book_lover_re_rwjy.svg" class="h-75" alt="">
+               </div>
+          </div>
+     </div>
 </div>
+
 <div class="jumbutron">
 
      <!-- Footer -->

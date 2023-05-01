@@ -84,7 +84,7 @@ if (isset($_SESSION['auth_admin']['admin_id']))
                                    <h4><?=$holdlist['firstname'].' '.$holdlist['lastname'];?></h4>
                                    <p><?=$holdlist['title']?></p>
                                    <p><?=date("M d, Y h:i:s a",strtotime($holdlist['hold_date']));?></p>
-                                   <form action="notification.php" method="POST">
+                                   <form action="" method="POST">
                                         <button type="submit" value="<?=$holdlist['hold_id'];?>"
                                              class="btn btn-primary btn-sm" name="done">Accept</button>
                                         <button type="submit" value="<?=$holdlist['hold_id'];?>"
@@ -233,6 +233,14 @@ if (isset($_SESSION['auth_admin']['admin_id']))
 
                if($query_run)
                {
+                    $update_copies = mysqli_query($con,"SELECT * FROM book WHERE book_id = '$book_hold' ");
+                    $copies_row= mysqli_fetch_assoc($update_copies);
+                    
+                    $book_copies = $copies_row['copy'];
+                    $new_book_copies = $book_copies + 1;
+
+                    mysqli_query($con,"UPDATE book SET copy = '$new_book_copies' where book_id = '$book_hold' ");
+
                     
                     echo "<script>alert('Book approved successfully'); window.location='index.php'</script>";
                }

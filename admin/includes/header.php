@@ -39,7 +39,9 @@
      <link href="assets/css/style.css" rel="stylesheet" />
 
      <!-- Animation -->
-     <link rel="stylesheet" href="assets/css/aos.css" />
+     <link rel="stylesheet" href="https://www.cssportal.com/css-loader-generator/" />
+     <!-- Loader -->
+     <link rel="stylesheet" href="https://www.cssportal.com/css-loader-generator/" />
 
 
 

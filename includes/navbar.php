@@ -41,6 +41,10 @@ include('admin/config/dbcon.php');
                          <a class="nav-link  text-white <?=$page == 'about.php' ? 'active': '' ?> fw-semibold"
                               href="about.php">About</a>
                     </li>
+                    <li class="nav-item">
+                         <a class="nav-link  text-white <?=$page == 'services.php' ? 'active': '' ?> fw-semibold"
+                              href="services.php">Services</a>
+                    </li>
                     <?php endif; ?>
                     <?php if(isset($_SESSION['auth_stud'])) :?>
                     <li class="nav-item dropdown">

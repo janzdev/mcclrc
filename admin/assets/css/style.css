@@ -12,12 +12,10 @@ body {
 }
 
 a {
- 
   text-decoration: none;
 }
 
 a:hover {
-  
   text-decoration: none;
 }
 
@@ -626,7 +624,6 @@ h6 {
 .sidebar-nav .nav-link:hover {
   color: #05c3dd;
   background: #f6f9ff;
- 
 }
 .sidebar-nav .nav-link:hover i {
   color: #05c3dd;
@@ -728,7 +725,7 @@ h6 {
 }
 .dashboard .students-card .card-icon {
   color: #4154f1;
-  background: #B8E8FC;
+  background: #b8e8fc;
 }
 .dashboard .borrowed-card .card-icon {
   color: #2eca6a;
@@ -776,24 +773,23 @@ h6 {
   padding-bottom: 0;
 }
 
-
 /* Book */
- .book {
+.book {
   font-size: 14px;
 }
- .book .table thead {
+.book .table thead {
   background: #f6f6fe;
 }
- /* .book .table thead th {
+/* .book .table thead th {
   padding: 0;
 } */
- .book .table tbody td {
+.book .table tbody td {
   font-size: 15px !important;
 }
- .book .dataTable-top {
+.book .dataTable-top {
   padding: 0 0 10px 0;
 }
- .book .dataTable-bottom {
+.book .dataTable-bottom {
   padding: 10px 0 0 0;
 }
 
@@ -871,7 +867,6 @@ h6 {
   color: rgba(1, 41, 112, 0.6);
 }
 
-
 .profile .profile-card .social-links a {
   font-size: 20px;
   display: inline-block;
@@ -888,7 +883,7 @@ h6 {
   font-size: 15px;
 }
 /* .profile .profile-overview .card-title { */
-  /* color: #012970; */
+/* color: #012970; */
 /* } */
 .profile .profile-overview .label {
   font-weight: 600;

@@ -1,4 +1,4 @@
-<div class="jumbutron mt-5">
+<div class="jumbutron">
 
      <!-- Footer -->
      <footer class="text-center text-lg-start text-white" style="background-color: #0D4C92">
